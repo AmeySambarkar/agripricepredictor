@@ -22,7 +22,7 @@ def load_data():
     """
     Load the data from CSV files in the 'datasets' folder.
     """
-    folder_path = 'datasets'  # Specify the folder where CSV files are stored
+    folder_path = 'agripricepredictor\datasets'  # Specify the folder where CSV files are stored
 
     # Get a list of all CSV files in the folder
     csv_files = glob.glob(os.path.join(folder_path, "*.csv"))
@@ -48,35 +48,6 @@ def load_data():
     logging.info(f"Data loaded. Shape: {combined_data.shape}")
     return combined_data
 
-    """
-    Load the data from CSV files in the 'datasets' folder.
-    """
-    folder_path = 'datasets'  # Specify the folder where CSV files are stored
-
-    # Get a list of all CSV files in the folder
-    csv_files = glob.glob(os.path.join(folder_path, "*.csv"))
-
-    if not csv_files:
-        logging.error(f"No CSV files found in the '{folder_path}' folder.")
-        return None
-
-    dataframes = []
-    for file_path in csv_files:
-        logging.info(f"Loading file: {file_path}")
-        # Read the CSV file with proper parsing
-        df = pd.read_csv(file_path, engine='python', on_bad_lines='skip')
-
-
-        # Extract commodity name from filename if not present
-        if 'Commodity' not in df.columns or df['Commodity'].isnull().all():
-            commodity_name = os.path.splitext(os.path.basename(file_path))[0]
-            df['Commodity'] = commodity_name
-
-        dataframes.append(df)
-
-    combined_data = pd.concat(dataframes, ignore_index=True)
-    logging.info(f"Data loaded. Shape: {combined_data.shape}")
-    return combined_data
 
 def parse_date(date_str):
     """
