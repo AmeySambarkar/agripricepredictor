@@ -1,0 +1,9 @@
+streamlit==1.24.0
+pandas==1.5.3
+numpy==1.23.5
+scikit-learn==1.2.2
+catboost==1.1
+python-dateutil==2.8.2
+matplotlib==3.6.2
+joblib==1.2.0
+plotly==5.11.0
